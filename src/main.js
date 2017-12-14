@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
-import btn from './button'
+import editor from './editor'
 
-Vue.use(btn);
+
+Vue.use(editor);
 
 new Vue({
   el: '#app',

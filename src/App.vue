@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <btn value="哈哈" @click="alt()"></btn>
+    <wd-editor></wd-editor>
   </div>
 </template>
 

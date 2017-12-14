@@ -2,14 +2,15 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './src/button/index.js',
+  entry: './src/main.js',
+  //entry: './src/editor/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'wd-btn.js',
-    library:'wdcom',
+    filename: 'wd-editor.js',
+  /*  library:'wd-editor',
     libraryTarget: 'umd',
-    umdNamedDefine: true
+    umdNamedDefine: true*/
   },
   module: {
     rules: [
