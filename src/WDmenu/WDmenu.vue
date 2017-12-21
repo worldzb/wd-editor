@@ -2,6 +2,8 @@
 	<div id="menu">
 		<div class="btn-group">
 			<alignCenter></alignCenter>
+			<alignLeft></alignLeft>
+			<alignRight></alignRight>
 			<!-- <button type="button" class="btn btn-default">
 				<i class="fa fa-align-left"></i>
 				<small v-if="textShow">左对齐</small>
@@ -18,9 +20,6 @@
 				<i class="fa fa-save"></i>
 				<small v-if="textShow">两边对齐</small>
 			</button> -->
-		</div>
-		<div class="mainBody" id="mb" contenteditable="true" v-model="input">
-			
 		</div>
 	</div>
 	
@@ -65,12 +64,5 @@
 		cursor: pointer;
 		outline:none
 	}
-	.mainBody{
-		width: 100%;
-		min-height: 200px;
-		outline: none;
-		background-color: #fff;
-		border: 1px solid #eee;
-		font-size: 20px;
-	}
+	
 </style>

@@ -1,13 +1,12 @@
 <template>
-	<button type="button" class="btn btn-default">
-		<i class="fa fa-align-center" @click="alignCenter()"></i>
+	<button type="button" class="btn btn-default" @click="alignCenter()">
+		<i class="fa fa-align-center" ></i>
 		<small v-if="TextShow">居中</small>
 	</button>
 </template>
 
 <script>
 	import config from '../config/config.js'
-
 	export default{
 		name:'alignCenter',
 		data(){
@@ -17,10 +16,9 @@
 		},
 		methods:{
 			alignCenter:function(){
-				document.execCommand("Delete",false,null);
+				document.execCommand("justifyCenter",false,null);
 			}
 		}
-		
 	}
 
 </script>
