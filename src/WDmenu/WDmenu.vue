@@ -1,9 +1,14 @@
 <template>
 	<div id="menu">
 		<div class="btn-group">
+			<bold></bold>
+			<italic></italic>
+			<underline></underline>
 			<alignCenter></alignCenter>
 			<alignLeft></alignLeft>
 			<alignRight></alignRight>
+			<test></test>
+
 			<!-- <button type="button" class="btn btn-default">
 				<i class="fa fa-align-left"></i>
 				<small v-if="textShow">左对齐</small>

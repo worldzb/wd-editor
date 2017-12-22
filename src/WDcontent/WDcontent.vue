@@ -1,11 +1,37 @@
 <template>
 	<div id="content">
-		<div class="mainBody" id="mb" contenteditable="true">
+		<div class="mainBody" id="mb" contenteditable="true" :style="style">
 			
 		</div>
 	</div>
 </template>
 
+<script type="text/javascript">
+	export default{
+		data(){
+			return{
+				style:{
+					width:'',
+				}
+			}
+		},
+		props:{
+			width:{
+				type:String,
+				default:"100%"
+			},
+			height:{
+				type:String,
+				default:"200px"
+			}
+		},
+		created:function(){
+			this.style={
+				width:this.width,
+			}
+		}
+	}
+</script>
 
 <style type="text/css">
 	.mainBody{
@@ -15,5 +41,6 @@
 		background-color: #fff;
 		border: 1px solid #eee;
 		font-size: 20px;
+		overflow-y: auto;
 	}
 </style>
