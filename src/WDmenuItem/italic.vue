@@ -1,7 +1,7 @@
 <template>
 	<a type="button" class="btn btn-default" @click="italic()">
 		<i class="fa fa-italic"></i>
-		<small v-if="TextShow">加粗</small>
+		<small v-if="TextShow">倾斜</small>
 	</a>
 </template>
 

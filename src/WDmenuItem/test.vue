@@ -17,7 +17,8 @@
 		methods:{
 			test:function(){
 				//alert("fds");
-				document.execCommand("insertText",false,"null");
+				document.execCommand("contentReadOnly",false,true);
+				
 			}
 		}
 	}

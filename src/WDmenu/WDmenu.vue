@@ -1,12 +1,14 @@
 <template>
 	<div id="menu">
 		<div class="btn-group">
+			<imageUpload></imageUpload>
 			<bold></bold>
 			<italic></italic>
 			<underline></underline>
 			<alignCenter></alignCenter>
 			<alignLeft></alignLeft>
 			<alignRight></alignRight>
+
 			<test></test>
 
 			<!-- <button type="button" class="btn btn-default">
