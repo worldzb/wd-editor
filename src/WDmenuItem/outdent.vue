@@ -1,27 +1,23 @@
 <template>
-	<a type="button" class="btn btn-default" @click="test()">
-		<i class="fa fa-plus-square"></i>
+	<a type="button" class="btn btn-default" @click="outdent()">
+		<i class="fa fa-outdent"></i>
 		<small v-if="TextShow">加粗</small>
 	</a>
 </template>
 
 <script>
-	import indent from './indent.vue'
 	import config from '../config/config.js'
 	export default{
-		name:'test',
+		name:'outdent',
 		data(){
 			return {
 				TextShow:config.MenuTextShow
 			}
 		},
-		components:{
-			indent:indent,
-		},
 		methods:{
-			test:function(){
+			outdent:function(){
 				//alert("fds");
-				document.execCommand("insertHTML",false,"<hr>");
+				document.execCommand("outdent",false,true);
 				
 			}
 		}

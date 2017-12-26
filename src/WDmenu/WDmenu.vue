@@ -8,7 +8,10 @@
 			<alignCenter></alignCenter>
 			<alignLeft></alignLeft>
 			<alignRight></alignRight>
-
+			<listOL></listOL>
+			<listUL></listUL>
+			<indent></indent>
+			<outdent></outdent>
 			<test></test>
 
 			<!-- <button type="button" class="btn btn-default">

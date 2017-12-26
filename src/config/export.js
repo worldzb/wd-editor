@@ -2,7 +2,7 @@
 * @Author: worldzb
 * @Date:   2017-12-10 21:06:17
 * @Last Modified by:   worldzb
-* @Last Modified time: 2017-12-26 00:19:06
+* @Last Modified time: 2017-12-26 20:11:55
 */
 
 import alignCenter from '../WDmenuItem/alignCenter.vue';
@@ -11,7 +11,13 @@ import alignRight from '../WDmenuItem/alignRight.vue';
 import bold from '../WDmenuItem/bold.vue';
 import italic from '../WDmenuItem/italic.vue';
 import underline from '../WDmenuItem/underline.vue';
-import imageUpload from '../WDmenuItem/imageUpload.vue'
+import imageUpload from '../WDmenuItem/imageUpload.vue';
+import listOL from '../WDmenuItem/listOL.vue';
+import listUL from '../WDmenuItem/listUL.vue';
+
+import indent from '../WDmenuItem/indent.vue';
+import outdent from '../WDmenuItem/outdent.vue';
+
 import test from '../WDmenuItem/test.vue';
 
 const comp={
@@ -22,6 +28,10 @@ const comp={
 	italic:italic,
 	underline:underline,
 	imageUpload:imageUpload,
+	listOL:listOL,
+	listUL:listUL,
+	indent:indent,
+	outdent:outdent,
 	test:test,
 	
 }
