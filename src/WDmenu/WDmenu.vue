@@ -5,6 +5,7 @@
 			<bold></bold>
 			<italic></italic>
 			<underline></underline>
+			<heading></heading>
 			<alignCenter></alignCenter>
 			<alignLeft></alignLeft>
 			<alignRight></alignRight>

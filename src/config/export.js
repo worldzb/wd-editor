@@ -2,7 +2,7 @@
 * @Author: worldzb
 * @Date:   2017-12-10 21:06:17
 * @Last Modified by:   worldzb
-* @Last Modified time: 2017-12-26 20:11:55
+* @Last Modified time: 2017-12-28 18:49:18
 */
 
 import alignCenter from '../WDmenuItem/alignCenter.vue';
@@ -17,6 +17,8 @@ import listUL from '../WDmenuItem/listUL.vue';
 
 import indent from '../WDmenuItem/indent.vue';
 import outdent from '../WDmenuItem/outdent.vue';
+
+import heading from '../WDmenuItem/heading.vue';
 
 import test from '../WDmenuItem/test.vue';
 
@@ -33,6 +35,7 @@ const comp={
 	indent:indent,
 	outdent:outdent,
 	test:test,
+	heading:heading,
 	
 }
 const compList=[

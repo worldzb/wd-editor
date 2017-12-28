@@ -1,15 +1,50 @@
 <template>
-	<div class="btn btn-default" @click="imageUpload()">
-		<a>
-			<i class="fa fa-file-image-o"></i>
+	<div class="btn-group">
+		<a type="button" class="btn btn-default dropdown-toggle" 
+		data-toggle="dropdown" @click="imageUpload()">
+			 <i class="fa fa-file-image-o"></i>
 			<small v-if="TextShow">图片</small>
 		</a>
-		<div id="model" :style="sty" v-if="isShow">
-			<div class="header">
-				<strong>图片上传</strong>
-			</div>
+		<ul class="dropdown-menu" role="menu">
+			<li @click="showModal()"><a href="#">本地上传</a></li>
+			<li @click="showModal2()"><a href="#">在线图片</a></li>
+		</ul>
+		<div class="modal fade" id="uploadImg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">图片上传</h4>
+					</div>
+					<div class="modal-body">
+						<img src="http://pic2.sc.chinaz.com/files/pic/pic9/201711/zzpic8396.jpg" alt="" width="100%">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-success">上传</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal -->
+		</div>
+		<div class="modal fade" id="urlImg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">图片上传</h4>
+					</div>
+					<div class="modal-body">
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-success">上传</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal -->
 		</div>
 	</div>
+
 </template>
 
 <script>
@@ -30,7 +65,12 @@
 				this.isShow=!this.isShow;
 				console.log(this)
 				//document.execCommand("contentReadOnly",false,true);
-				
+			},
+			showModal:()=>{
+				$('#uploadImg').modal('show');
+			},
+			showModal2:()=>{
+				$('#urlImg').modal('show')
 			}
 		}
 	}
