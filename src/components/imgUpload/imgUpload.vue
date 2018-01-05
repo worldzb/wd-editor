@@ -3,7 +3,7 @@
 		<form id="fileUpload" accept-charset="utf-8" enctype="multipart/form-data" method="post">
 			<input id="ipt-file" class="ipt-file" type="file" name="imgFile" @change="fileChange()" style="outline:none">
 		</form>
-		<canvas id="canvas-img" width='501' height="400" style="width:100%;height:300px;" v-model="image" v-show="isFileSelect">
+		<canvas id="canvas-img" width='501' height="400" style="width:100%;height:450px;" v-model="image" v-show="isFileSelect">
 			fsda
 		</canvas>
 		<div>

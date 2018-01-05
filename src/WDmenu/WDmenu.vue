@@ -1,7 +1,6 @@
 <template>
 	<div id="menu">
 		<div class="btn-group">
-			<imageUpload></imageUpload>
 			<bold></bold>
 			<italic></italic>
 			<underline></underline>
@@ -13,6 +12,8 @@
 			<listUL></listUL>
 			<indent></indent>
 			<outdent></outdent>
+			<imageUpload></imageUpload>
+			<about></about>
 			<test></test>
 
 			<!-- <button type="button" class="btn btn-default">
