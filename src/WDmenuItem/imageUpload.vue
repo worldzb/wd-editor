@@ -16,13 +16,11 @@
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 						<h4 class="modal-title" id="myModalLabel">图片上传</h4>
 					</div>
-					<div class="modal-body">
-						<img src="http://pic2.sc.chinaz.com/files/pic/pic9/201711/zzpic8396.jpg" alt="" width="100%">
+					<div class="modal-body" style="padding:0">
+						<imgUpload></imgUpload>
+						<!-- <img src="http://pic2.sc.chinaz.com/files/pic/pic9/201711/zzpic8396.jpg" alt="" width="100%"> -->
 					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-						<button type="button" class="btn btn-success">上传</button>
-					</div>
+					
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal -->
 		</div>
@@ -49,6 +47,9 @@
 
 <script>
 	import config from '../config/config.js'
+	import Vue from 'vue';
+	import imgUpload from '../components/imgUpload/imgUpload.js'
+	Vue.use(imgUpload);
 	export default{
 		name:'imageUpload',
 		data(){
