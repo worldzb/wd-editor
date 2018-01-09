@@ -5,6 +5,7 @@
 	</div>
 </template>
 <script type="text/javascript">
+	import {} from 'vuex';
 	import WDmenu from "../WDmenu/WDmenu.vue";
 	import WDcontent from '../WDcontent/WDcontent.vue';
 	export default{

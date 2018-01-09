@@ -1,5 +1,5 @@
 <template>
-	<div class="btn-group">
+	<div class="btn-group" id="uploadBox">
 		<a type="button" class="btn btn-default dropdown-toggle" 
 		data-toggle="dropdown" @click="imageUpload()">
 			 <i class="fa fa-file-image-o"></i>
@@ -17,7 +17,7 @@
 						<h4 class="modal-title" id="myModalLabel">图片上传</h4>
 					</div>
 					<div class="modal-body" style="padding:0">
-						<imgUpload></imgUpload>
+						<imgUpload width="597" height="400" @uploadend="uploadend" URL="http://localhost/www/lt/admin.php/ImgUpload/test"></imgUpload>
 						<!-- <img src="http://pic2.sc.chinaz.com/files/pic/pic9/201711/zzpic8396.jpg" alt="" width="100%"> -->
 					</div>
 					
@@ -48,8 +48,10 @@
 <script>
 	import config from '../config/config.js'
 	import Vue from 'vue';
+	import VueResource from 'vue-resource';
 	import imgUpload from '../components/imgUpload/imgUpload.js'
 	Vue.use(imgUpload);
+	Vue.use(VueResource);
 	export default{
 		name:'imageUpload',
 		data(){
@@ -60,6 +62,16 @@
 
 				}
 			}
+		},
+		created:function(){
+			this.uploadUrl=this.URL;
+		},
+		mounted(){
+			this.zeroX=document.getElementById('uploadBox').offsetLeft;
+			this.zeroY=document.getElementById('uploadBox').offsetTop;
+		},
+		updated(){
+
 		},
 		methods:{
 			imageUpload:function(){
@@ -72,6 +84,11 @@
 			},
 			showModal2:()=>{
 				$('#urlImg').modal('show')
+			},
+			uploadend:(data)=>{
+				let dt=eval(data);
+				let packString="<img src='"+dt+"' width='100px' height='100px'>";
+				document.execCommand("insertHTML",false,data);
 			}
 		}
 	}

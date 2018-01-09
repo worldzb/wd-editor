@@ -3,7 +3,7 @@
 		<form id="fileUpload" accept-charset="utf-8" enctype="multipart/form-data" method="post">
 			<input id="ipt-file" class="ipt-file" type="file" name="imgFile" @change="fileChange()" style="outline:none">
 		</form>
-		<canvas id="canvas-img" width='501' height="400" style="width:100%;height:450px;" v-model="image" v-show="isFileSelect">
+		<canvas id="canvas-img" :width='width' :height="height" v-model="image" v-show="isFileSelect">
 			fsda
 		</canvas>
 		<div>
@@ -24,9 +24,9 @@
 					<span v-if="!isUploading2">上传原图</span> 
 					<span v-else><i class="fa fa-spinner fa-spin"></i>&nbsp;上传中</span> 
 				</button>
-			</div>
+			</div> 
 		</div>
-		<div style="height:109px;">
+		<div style="height:108px">
 			
 		</div>
 	</div>
@@ -51,13 +51,29 @@
 			}
 		},
 		props:{
+			//图片上传服务器URL地址
 			URL:{
 				type:String,
 				default:"null",
 			},
+			width:{
+				type:String,
+				default:'500px',
+			},
+			height:{
+				type:String,
+				default:'400px'
+			},
+			options:{
+				type:Object,
+				default:()=>{
+					return {}
+				},
+			}
 		},
 		created:function(){
 			this.uploadUrl=this.URL;
+
 		},
 		mounted(){
 		},
@@ -68,9 +84,15 @@
 			fileChange:function(){
 				var that=this;
 				if(this.drawImg===''){
-					this.drawImg=new DrawImg('ipt-file','canvas-img');
+					this.drawImg=new DrawImg({
+						ipt:'ipt-file',
+						context:'canvas-img',
+						multiple:0.04,
+						zeroX:500,
+						zeroY:90,
+					});
 				}
-				this.drawImg.drawCenter();
+				this.drawImg.drawFill();
 				//事件委托
 				this.drawImg.eventUpdate=()=>{
 					that.image=that.drawImg.rtImageData();//获取canvas数据
@@ -82,6 +104,7 @@
 			uploadImg:function(){
 				//图片上传
 				this.isUploading=true;
+				let that=this;
 				let dataBlob=Convert.dataURL2formData(this.image);
 				let formData=new FormData();
 				formData.append('imgFile',dataBlob);
@@ -89,6 +112,8 @@
 					emulateJSON: true,
 				}).then((res)=>{
 					//var red=eval(res.body);
+					that.isUploading=false;
+					that.$emit('uploadend',res);
 					console.log(res);
 				});
 			},
@@ -101,7 +126,9 @@
 					emulateJSON: true,
 				}).then((res)=>{
 					//var red=eval(res.body);
-					console.log(res);
+					that.isUploading2=false;
+					that.$emit('uploadend',res);
+					//console.log(res);
 				});
 			}
 		}
@@ -111,7 +138,7 @@
 
 <style type="text/css">
 	#imgUpload{
-		border:1px solid #eee;width:100%;height: 100%
+		border:1px solid #eee;;
 	}
 	#canvas-img{
 		border-top: 2px solid #bbb;

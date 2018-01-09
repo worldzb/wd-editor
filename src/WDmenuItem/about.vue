@@ -18,10 +18,7 @@
 						<p><strong style="font-size: 18px">作者</strong>：worldzb</p>
 						<p><strong style="font-size: 18px">官网地址</strong>：<a href="http://www.worldzb.cn">www.worldzb.cn</a></p>
 						<p><strong style="font-size: 18px">GitHub地址</strong>：<a href="https://github.com/worldzb/wd-editor">WD-Editor</a></p>
-						<p><strong style="font-size: 18px">简介</strong>：WD-Editor是一款开源免费的网页富文本编辑器，使用 <strong>Vue2.0</strong>+<strong>Bootstrap3.0</strong> 构建。图标使用 <strong>Font Awesome</strong>。图片上传使用 <strong>Worldzb</strong> 插件库 <a href="https://github.com/worldzb/comp-lib" title=""><strong>comp-lib(1.0.0)</strong></a></p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<p><strong style="font-size: 18px">简介</strong>：WD-Editor是一款开源免费的网页富文本编辑器，使用 <strong>Vue2.0</strong>+<strong>Bootstrap3.0</strong> 构建。图标使用 <strong>Font Awesome</strong>。图片上传使用 <strong>Worldzb</strong> 插件库 <a href="https://github.com/worldzb/comp-lib" title=""><strong>comp-lib(1.0.0)</strong></a>。</p>
 					</div>
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal -->

@@ -6,8 +6,9 @@
 </template>
 
 <script>
-	import indent from './indent.vue'
-	import config from '../config/config.js'
+	import indent from './indent.vue';
+	import config from '../config/config.js';
+	import {mapGetters,mapActions} from 'vuex';
 	export default{
 		name:'test',
 		data(){
@@ -20,11 +21,13 @@
 		},
 		methods:{
 			test:function(){
-				//alert("fds");
-				document.execCommand("insertHTML",false,"<div class='panel panel-default'><div class='panel-body' contenteditable='true' style='padding:0;margin:0;'><pre style='padding:0;margin:0;height:30px;border:none;border-radius:0'><span>1</span></pre></div></div>");
-				//document.execCommand("insertBrOnReturn",false,false);
-				
+				let dt="http://www.worldzb.cn/www/lt/Public/images/logo.jpg";
+				let packString="<img src='"+dt+"'>";
+				document.execCommand("insertHTML",false,packString);
 			}
 		}
+		/*methods:mapActions([
+			'incre',
+		]),*/
 	}
 </script>
