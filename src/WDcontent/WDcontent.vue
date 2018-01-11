@@ -1,7 +1,9 @@
 <template>
-	<div id="content">
+	<div id="content" >
 		<div class="mainBody" id="mb" contenteditable="true" :style="style">
-			
+			<div v-html="test">
+				
+			</div>
 		</div>
 	</div>
 </template>
@@ -11,13 +13,18 @@
 	import vue from 'vue';
 	import {mapGetters,mapActions} from 'vuex';
 	import store from '../store/main.js'
-	
+	import box from './modules/box.vue'
+
 	export default{
 		data(){
 			return{
 				style:{
-				}
+				},
+				test:'<box></box>',
 			}
+		},
+		components:{
+			box:box
 		},
 		computed:mapGetters(['download']),
 		props:{
@@ -49,5 +56,11 @@
 		overflow-y: auto;
 		padding-left: 20px;
 		padding-right: 20px;
+
+		display: inline-block;
+	}
+	.mainBody>pre{
+		width: 100%;
+		display: inline-block;
 	}
 </style>
