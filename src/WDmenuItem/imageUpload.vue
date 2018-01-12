@@ -17,7 +17,7 @@
 						<h4 class="modal-title" id="myModalLabel">图片上传</h4>
 					</div>
 					<div class="modal-body" style="padding:0">
-						<imgUpload width="597" height="400" @uploadend="uploadend" URL="http://localhost/www/lt/admin.php/ImgUpload/test"></imgUpload>
+						<imgUpload width="597" height="400" @uploadend="uploadend" URL="http://localhost/test/receive.php"></imgUpload>
 						<!-- <img src="http://pic2.sc.chinaz.com/files/pic/pic9/201711/zzpic8396.jpg" alt="" width="100%"> -->
 					</div>
 					
@@ -46,10 +46,12 @@
 </template>
 
 <script>
-	import config from '../config/config.js'
+	import config from '../config/config.js';
 	import Vue from 'vue';
 	import VueResource from 'vue-resource';
-	import imgUpload from '../components/imgUpload/imgUpload.js'
+	import imgUpload from '../components/imgUpload/imgUpload.js';
+	import imgBoxComp from '../components/imgBox/imgBox.vue';
+
 	Vue.use(imgUpload);
 	Vue.use(VueResource);
 	export default{
@@ -76,7 +78,7 @@
 		methods:{
 			imageUpload:function(){
 				this.isShow=!this.isShow;
-				console.log(this)
+				//console.log(this)
 				//document.execCommand("contentReadOnly",false,true);
 			},
 			showModal:()=>{
@@ -86,9 +88,16 @@
 				$('#urlImg').modal('show')
 			},
 			uploadend:(data)=>{
+				let imgBox=Vue.extend(imgBoxComp);
 				let dt=eval(data);
-				let packString="<img src='"+dt+"' width='100px' height='100px'>";
-				document.execCommand("insertHTML",false,data);
+				console.log(dt.body);
+				document.execCommand("insertHTML",false,"<div id='imgBoxDiv'>dd</div>");
+				new imgBox({
+					propsData:{
+						src:dt.body,
+					}
+				}).$mount('#imgBoxDiv');
+				document.execCommand("insertHTML",false,"<br>");
 			}
 		}
 	}
