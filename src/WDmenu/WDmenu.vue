@@ -13,6 +13,7 @@
 			<indent></indent>
 			<outdent></outdent>
 			<imageUpload></imageUpload>
+			<wd-code></wd-code>
 			<about></about>
 			<test></test>
 

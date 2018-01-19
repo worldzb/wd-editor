@@ -18,7 +18,7 @@
 <script>
 	import config from '../config/config.js'
 	export default{
-		name:'header',
+		name:'wdHeader',
 		data(){
 			return {
 				TextShow:config.MenuTextShow

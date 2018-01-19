@@ -17,10 +17,7 @@
 				TextShow:config.MenuTextShow
 			}
 		},
-		components:{
-			
-		},
-		methods:{
+		/*methods:{
 			test:function(){
 				let imgBoxCom=Vue.extend(imgBox);
 				let packString="<pre ><code class='language-css'>p { color: red }</code></pre>"
@@ -33,9 +30,12 @@
 				
 				document.execCommand('insertHTML', false, '<br>');
 			}
-		}
-		/*methods:mapActions([
-			'incre',
-		]),*/
+		}*/
+		methods:{
+			...mapActions(['incre']),
+			test(){
+				this.incre({args:'hello worldzb'});
+			}
+		},
 	}
 </script>

@@ -5,6 +5,7 @@
 				
 			</div>
 		</div>
+		{{download}}
 	</div>
 </template>
 
@@ -20,7 +21,7 @@
 			return{
 				style:{
 				},
-				test:'<box></box>',
+				test:'<box>辅导费</box>',
 			}
 		},
 		components:{
