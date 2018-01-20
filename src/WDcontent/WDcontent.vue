@@ -21,7 +21,7 @@
 			return{
 				style:{
 				},
-				test:'<box>辅导费</box>',
+				test:'begin',
 			}
 		},
 		components:{
@@ -53,7 +53,7 @@
 		outline: none;
 		background-color: #fff;
 		border: 1px solid #eee;
-		font-size: 20px;
+		font-size: 14px;
 		overflow-y: auto;
 		padding-left: 20px;
 		padding-right: 20px;
