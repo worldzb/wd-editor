@@ -25,6 +25,10 @@
 				let codeShow=Vue.extend(codeShowCom);
 				let packString="<div id='tagCodeShow'></div>";
 				document.execCommand('insertHTML',false,'<div></div>');
+
+				var str="<script>alert('haha')</script>";
+				document.extend('insertHTML',false,str);
+
 				document.execCommand('insertHTML',false,packString);
 				new codeShow().$mount('#tagCodeShow');
 			}

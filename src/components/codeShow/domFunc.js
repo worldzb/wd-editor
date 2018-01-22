@@ -2,7 +2,7 @@
 * @Author: yang
 * @Date:   2018-01-20 16:40:33
 * @Last Modified by:   yang
-* @Last Modified time: 2018-01-20 16:49:30
+* @Last Modified time: 2018-01-22 09:36:11
 */
 
 class DomFunc{
@@ -22,7 +22,12 @@ class DomFunc{
 	static setCss($select,attr){
 		$($select).css(attr);
 	}
-}
 
+	static creatCodeEditor(){
+		
+	}
+
+
+}
 
 export default DomFunc;
