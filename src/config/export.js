@@ -2,7 +2,7 @@
 * @Author: worldzb
 * @Date:   2017-12-10 21:06:17
 * @Last Modified by:   yang
-* @Last Modified time: 2018-01-23 12:39:40
+* @Last Modified time: 2018-01-23 14:49:54
 */
 
 import alignCenter from '../WDmenuItem/alignCenter.vue';
@@ -24,6 +24,7 @@ import about from '../WDmenuItem/about.vue';
 import wdCode from '../WDmenuItem/code.vue';
 import test from '../WDmenuItem/test.vue';
 import horizontal from '../WDmenuItem/horizontal.vue';
+import textColor from '../WDmenuItem/textColor.vue';
 
 const comp={
 	alignCenter:alignCenter,
@@ -41,7 +42,8 @@ const comp={
 	about:about,
 	heading:heading,
 	wdCode:wdCode,
-	horizontal:horizontal
+	horizontal:horizontal,
+	textColor:textColor
 }
 const compList=[
 	{

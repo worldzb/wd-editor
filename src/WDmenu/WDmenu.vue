@@ -5,6 +5,7 @@
 			<italic></italic>
 			<underline></underline>
 			<heading></heading>
+			<text-color></text-color>
 			<alignCenter></alignCenter>
 			<alignLeft></alignLeft>
 			<alignRight></alignRight>
@@ -17,23 +18,6 @@
 			<horizontal></horizontal>
 			<about></about>
 			<test></test>
-
-			<!-- <button type="button" class="btn btn-default">
-				<i class="fa fa-align-left"></i>
-				<small v-if="textShow">左对齐</small>
-			</button>
-			<button type="button" class="btn btn-default">
-				<i class="fa fa-align-right"></i>
-				<small v-if="textShow">右对齐</small>
-			</button>
-			<button type="button" class="btn btn-default">
-				<i class="fa fa-align-justify"></i>
-				<small v-if="textShow">两边对齐</small>
-			</button>
-			<button type="button" class="btn btn-default" @click="showCode()">
-				<i class="fa fa-save"></i>
-				<small v-if="textShow">两边对齐</small>
-			</button> -->
 		</div>
 	</div>
 	
@@ -47,7 +31,6 @@
 		data(){
 			return{
 				size:1,
-				textShow:false,
 				input:""
 			}
 		},

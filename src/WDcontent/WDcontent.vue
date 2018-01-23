@@ -5,6 +5,7 @@
 				
 			</div>
 		</div>
+		
 	</div>
 </template>
 
@@ -12,12 +13,14 @@
 
 	import vue from 'vue';
 	import {mapGetters,mapActions} from 'vuex';
-	import store from '../store/main.js'
-	import box from './modules/box.vue'
+	import store from '../store/main.js';
+	import box from './modules/box.vue';
+
 	export default{
 		data(){
 			return{
 				test:'begin',
+				color:'',
 			}
 		},
 		components:{
