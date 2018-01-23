@@ -14,6 +14,7 @@
 			<outdent></outdent>
 			<imageUpload></imageUpload>
 			<wd-code></wd-code>
+			<horizontal></horizontal>
 			<about></about>
 			<test></test>
 
@@ -65,8 +66,20 @@
 
 
 <style type="text/css">
+
+::-webkit-scrollbar{
+  	width: 10px;
+ 	background-color: red;
+} 
+::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+	background: #535353;
+}
+::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    border-left: 1px solid #ccc;
+    background: #EDEDED;
+}
 	#menu{
-		background-color: #eee
+		background-color: #eee;border-bottom: 1px solid #ddd;
 	}
 	.test{
 		width: 200px;
@@ -77,5 +90,10 @@
 		cursor: pointer;
 		outline:none
 	}
-	
+	.btn{
+		border:none;
+		border-radius: 0
+	}
+
+
 </style>
