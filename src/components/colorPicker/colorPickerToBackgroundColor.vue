@@ -3,7 +3,7 @@
 
     <!-- 颜色显示小方块 -->
     <div class="colorBtn"
-      v-on:click="openStatus = !disabled"
+      v-on:click="openStatus = !openStatus"
       v-bind:class="{ disabled: disabled }"
     >
       <div v-bind:style="`background:${showColor}`" class="colorBtnBorder">

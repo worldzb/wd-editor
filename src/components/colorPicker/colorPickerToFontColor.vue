@@ -3,7 +3,7 @@
 
     <!-- 颜色显示小方块 -->
     <div class="colorBtn"
-      v-on:click="openStatus = !disabled"
+      v-on:click="openStatus = !openStatus"
       v-bind:class="{ disabled: disabled }"
     >
       <div v-bind:style="`border-bottom:3px solid ${showColor}`" class="colorBtnBorder">
@@ -220,7 +220,7 @@ export default {
   .colorBtnBorder{padding-left: 3px;padding-right: 3px;height: 18px;}
   .colorBtn.disabled{ cursor: no-drop; }
   .box{
-    position: absolute; width: 220px; background: #fff; border: 1px solid #ddd; visibility: hidden; border-radius: 2px; margin-top: 2px; padding: 10px; padding-bottom: 5px; box-shadow: 0 0 5px rgba(0,0,0,.15); opacity: 0; transition: all .3s ease;
+    position: absolute; width: 220px; background: #fff; border: 1px solid #ddd; visibility: hidden; border-radius: 2px; margin-top: 2px; padding: 10px; padding-bottom: 5px; box-shadow: 0 0 5px rgba(0,0,0,.15); opacity: 0; 
     h3{ margin: 0; font-size: 14px; font-weight: normal; margin-top: 10px; margin-bottom: 5px; line-height: 1; }
 }
 .box.open{ visibility: visible; opacity: 1; }
