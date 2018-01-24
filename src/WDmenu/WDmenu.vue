@@ -6,6 +6,7 @@
 			<underline></underline>
 			<heading></heading>
 			<text-color></text-color>
+			<font-bgc></font-bgc>
 			<alignCenter></alignCenter>
 			<alignLeft></alignLeft>
 			<alignRight></alignRight>
