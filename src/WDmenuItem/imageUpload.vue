@@ -5,7 +5,7 @@
 			 <i class="fa fa-file-image-o"></i>
 			<small v-if="TextShow">图片</small>
 		</a>
-		<ul class="dropdown-menu" role="menu">
+		<ul class="dropdown-menu active" role="menu">
 			<li @click="showModal()"><a href="#">本地上传</a></li>
 			<li @click="showModal2()"><a href="#">在线图片</a></li>
 		</ul>

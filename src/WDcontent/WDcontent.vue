@@ -72,6 +72,8 @@
 		width: 100%;
 		display: inline-block;
 	}
-
+	.btn-default{
+		color:#88a;
+	}
 	
 </style>
