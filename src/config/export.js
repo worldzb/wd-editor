@@ -1,8 +1,8 @@
 /*
 * @Author: worldzb
 * @Date:   2017-12-10 21:06:17
-* @Last Modified by:   yang
-* @Last Modified time: 2018-01-24 11:10:17
+* @Last Modified by:   worldzb
+* @Last Modified time: 2018-01-24 18:27:14
 */
 
 import alignCenter from '../WDmenuItem/alignCenter.vue';
@@ -26,6 +26,7 @@ import test from '../WDmenuItem/test.vue';
 import horizontal from '../WDmenuItem/horizontal.vue';
 import textColor from '../WDmenuItem/textColor.vue';
 import fontBgc from '../WDmenuItem/fontBackgroundColor.vue';
+import fontFamily from '../WDmenuItem/fontFamily.vue';
 
 const comp={
 	alignCenter:alignCenter,
@@ -46,6 +47,7 @@ const comp={
 	horizontal:horizontal,
 	textColor:textColor,
 	fontBgc:fontBgc,
+	fontFamily:fontFamily
 }
 const compList=[
 	{

@@ -7,6 +7,7 @@
 			<heading></heading>
 			<text-color></text-color>
 			<font-bgc></font-bgc>
+			<font-family></font-family>
 			<alignCenter></alignCenter>
 			<alignLeft></alignLeft>
 			<alignRight></alignRight>
