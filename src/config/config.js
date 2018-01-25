@@ -1,12 +1,36 @@
 /*
 * @Author: worldzb
 * @Date:   2017-12-10 20:54:06
-* @Last Modified by:   yang
-* @Last Modified time: 2018-01-23 12:56:47
+* @Last Modified by:   worldzb
+* @Last Modified time: 2018-01-25 20:22:39
 */
+
+//字体选择
+const fontFace=[
+	{name:"微软雅黑",class:"YaHei"},
+	{name:"宋体",class:"SimSun"},
+	{name:"Courier New",class:"'Courier New', Courier, monospace"},
+	{name:"Times new roman",class:"Times new roman"},
+	{name:"新宋体",class:"NSimSun"},
+	{name:"仿宋",class:"FangSong"},
+	{name:"楷体",class:"KaiTi"},
+	{name:"隶书",class:"LiSu"},
+	{name:"幼圆",class:"YouYuan"},
+	{name:"华文琥珀",class:"STHupo"},
+	{name:"华文彩云",class:"STCaiyun"},
+	{name:"Consoles",class:"Consolas, Monaco, monospace"},
+	{name:"Arial",class:"Arial, Helvetica, sans-serif"},
+	{name:"Arial Black",class:"Gadget, sans-serif"},
+	{name:"Comic Sans MS",class:"'Comic Sans MS', cursive, sans-serif"},
+	{name:"Impact",class:"Impact, Charcoal, sans-serif"},
+	{name:"Verdana",class:"Verdana, Geneva, sans-serif"},
+]
+
+
 
 const config={
 	MenuTextShow:false,
+	fontFace:fontFace,
 	version:'1.0.0(内测版)',
 }
 

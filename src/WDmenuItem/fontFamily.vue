@@ -7,7 +7,7 @@
 				<i class="fa fa-caret-down"></i>
 			</a>
 		</a>
-		<ul class="dropdown-menu active fontList" role="menu">
+		<ul class="dropdown-menu my-active fontList" role="menu">
 			<li v-for="(item,index) in fontFamilyArr" @click="setFontName(index)">
 				<a href="javascript:;">{{item.name}}</a>
 			</li>
@@ -23,25 +23,7 @@
 			return {
 				TextShow:config.MenuTextShow,
 				currentFont:'微软雅黑',
-				fontFamilyArr:[
-					{name:"微软雅黑",class:"YaHei"},
-					{name:"宋体",class:"SimSun"},
-					{name:"Courier New",class:"'Courier New', Courier, monospace"},
-					{name:"Times new roman",class:"Times new roman"},
-					{name:"新宋体",class:"NSimSun"},
-					{name:"仿宋",class:"FangSong"},
-					{name:"楷体",class:"KaiTi"},
-					{name:"隶书",class:"LiSu"},
-					{name:"幼圆",class:"YouYuan"},
-					{name:"华文琥珀",class:"STHupo"},
-					{name:"华文彩云",class:"STCaiyun"},
-					{name:"Consoles",class:"Consolas, Monaco, monospace"},
-					{name:"Arial",class:"Arial, Helvetica, sans-serif"},
-					{name:"Arial Black",class:"Gadget, sans-serif"},
-					{name:"Comic Sans MS",class:"'Comic Sans MS', cursive, sans-serif"},
-					{name:"Impact",class:"Impact, Charcoal, sans-serif"},
-					{name:"Verdana",class:"Verdana, Geneva, sans-serif"},
-				]
+				fontFamilyArr:config.fontFace,//加载配置文件
 			}
 		},
 		components:{
@@ -80,7 +62,7 @@
 		text-overflow:ellipsis;
 		white-space: nowrap;
 	}
-	.active{
+	.my-active{
 		overflow-y: auto
 	}
 	.fontList{

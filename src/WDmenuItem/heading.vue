@@ -5,7 +5,7 @@
 			 <i class="fa fa-header"></i>
 			<small v-if="TextShow">标题</small>
 		</a>
-		<ul class="dropdown-menu active" role="menu">
+		<ul class="dropdown-menu my-active" role="menu">
 			<li @click="h1()"><a href="#"><h1>一级标题</h1></a></li>
 			<li @click="h2()"><a href="#"><h2>二级标题</h2></a></li>
 			<li @click="h3()"><a href="#"><h3>三级标题</h3></a></li>
@@ -50,13 +50,13 @@
 </script>
 
 <style type="text/css">
-	.active{
+	.my-active{
 		border-radius: 0;padding:0;
 	}
-	.active li a{
+	.my-active li a{
 		background: #fff;
 	}
-	.active li a:hover{
+	.my-active li a:hover{
 		background: #6495ED;
 		color:white;
 	}
