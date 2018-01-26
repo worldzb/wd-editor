@@ -1,24 +1,32 @@
 <template>
-	<div id="codeEditor" class="codeShow">
-		<div>
-			语言：
-			<select>
-				<option value="volvo">Volvo</option>
-				<option value="saab">Saab</option>
-				<option value="opel">Opel</option>
-				<option value="audi">Audi</option>
-			</select>
-			大小：
-			<select>
-				<option value="volvo">Volvo</option>
-				<option value="saab">Saab</option>
-				<option value="opel">Opel</option>
-				<option value="audi">Audi</option>
-			</select>
+	<div id="codeEditor" class="codeShow" contenteditable="false" @mouseover="msOver()">
+		<div :class="{selectLang:isShow.isSelect}" v-show='isShow.language'>
+			<div style="float: left">
+				<a type="button" class="btn btn-default dropdown-toggle lang" 
+				data-toggle="dropdown">
+					{{lang}}
+				</a>
+				<ul class="dropdown-menu my-active" role="menu" style="height:200px">
+					<li v-for="(item,index) in language" @click="switchLang(index)">
+						<a href="#">{{item.lang}}</a>
+					</li>
+				</ul>
+			</div>
+			<div>
+				<a type="button" class="btn btn-default dropdown-toggle lang" 
+				data-toggle="dropdown">
+					{{height}}
+				</a>
+				<ul class="dropdown-menu my-active" role="menu" style="height:200px">
+					<li v-for="(item,index) in heightList" @click="switchHeight(index)">
+						<a href="#">{{item}}</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 		<monaco-editor
-			height="200"
-	        language="typescript"
+			:height="height"
+	        :language="lang"
 	        srcPath="https://cdn.bootcss.com/monaco-editor/0.10.1/min"
 	        :code="code"
 	        :options="options"
@@ -36,20 +44,30 @@
 <script type="text/javascript">
 	import domFunc from './domFunc.js';
 	import monacoEditor from './Monaco.vue';
+	import config from './config.js';
 	export default{
 		data(){
 			return{
 				code: '// type your code \n',
 				highlightLines: [
-				{
-					number: 0,
-					class: 'primary-highlighted-line'
-				},
-				{
-					number: 0,
-					class: 'secondary-highlighted-line'
+					{
+						number: 0,
+						class: 'primary-highlighted-line'
+					},
+					{
+						number: 0,
+						class: 'secondary-highlighted-line'
+					}
+				],
+				lang:'javascript',
+				language:config.language,
+				height:600,
+				heightList:config.heightList,
+
+				isShow:{
+					language:false,
+					isSelect:true,
 				}
-				]
 			}
 		},
 		components:{
@@ -83,6 +101,15 @@
 			},
 			clickHandler() {
 				console.log('here is the code:', this.editor.getValue());
+			},
+			msOver(){
+				this.isShow.language=true;
+			},
+			switchLang(index){
+				this.lang=this.language[index].lang;
+			},
+			switchHeight(index){
+				this.height=this.heightList[index];
 			}
 		}
 	}
@@ -92,6 +119,18 @@
 
 <style type="text/css">
 	.codeShow{
-		border:1px solid #aaa;
+		border-left:5px solid #ddd;
 	}
+	.selectLang{
+		margin-left: 6%;
+	}
+	.lang{
+		padding: 2px 8px;
+		height: 25px;
+		width: 100px;
+		font-family:'Consolas';
+		border-top:2px solid #eee;
+		border-bottom:2px solid #eee;
+	}
+
 </style>

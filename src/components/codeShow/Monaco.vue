@@ -11,7 +11,7 @@ module.exports = {
     //editor 宽，默认100%
     width: { type: [String, Number], default: '100%' },
     //editor 高，默认100%
-    height: { type: [String, Number], default: '100%' },
+    height: { type: [String, Number], default: '600' },
     //editor中的代码
     code: { type: String, default: '// code \n' },
     //cdn源路径
@@ -83,6 +83,9 @@ module.exports = {
     },
     language () {
       window.monaco.editor.setModelLanguage(this.editor.getModel(), this.language)
+    },
+    height(){
+      
     }
   },
   methods: {
@@ -154,7 +157,10 @@ module.exports = {
       //editor 已经被创建后，执行的方法
       this.editorHasLoaded(this.editor, window.monaco);
     },
-
+    changeOption(){
+      let option=this.editorOptions();
+      this.editor.updateOptions(option);
+    },
     //对象销毁
     destroyMonaco() {
       if (typeof this.editor !== 'undefined') {
