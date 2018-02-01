@@ -2,7 +2,7 @@
 * @Author: yang
 * @Date:   2017-12-27 15:15:24
 * @Last Modified by:   yang
-* @Last Modified time: 2018-01-12 13:36:00
+* @Last Modified time: 2018-01-30 15:35:25
 */
 
 
@@ -26,27 +26,25 @@ class DrawImg{
 		this.multiple=options.multiple;
 		this.ipt=options.ipt;//图像输入input控件id
 		this.context=options.context;//图像显示canvas id
-		this.zeroX=options.zeroX;//鼠标原点坐标
-		this.zeroY=options.zeroY;//原点坐标
 		//--end
 		
-		this.canvas='';//获取所得的canvas对象
-		this.ctx='';//canvas创建的上下文2d 画图对象（2d画板）
+		this.canvas='';					//获取所得的canvas对象
+		this.ctx='';					//canvas创建的上下文2d 画图对象（2d画板）
 
-		this.beginX=0;//画图初始坐标X
-		this.beginY=0;//画图初始坐标X
-		this.imgWidth=0;//画图实际宽度
-		this.imgHeight=0;//画图实际高度
-		this.beginPoint=[0,0];//画图初始坐标点
+		this.beginX=0;					//画图初始坐标X
+		this.beginY=0;					//画图初始坐标X
+		this.imgWidth=0;				//画图实际宽度
+		this.imgHeight=0;				//画图实际高度
+		this.beginPoint=[0,0];			//画图初始坐标点
 		
 
-		this.isDregStart=false;//是否执行拖拽
-		this.imgDataUrl='';//返回在canvas经过裁切的图像数据，以base64的方式
-		this.eventUpdate=null;//委托，绑定实例自定事件
+		this.isDregStart=false;			//是否执行拖拽
+		this.imgDataUrl='';				//返回在canvas经过裁切的图像数据，以base64的方式
+		this.eventUpdate=null;			//委托，绑定实例自定事件
 
-		this.Img=new Image();//需要绘制的图像
-		this.createCanvas();//初始化canvas
-		this.addEvent();//事件绑定
+		this.Img=new Image();			//需要绘制的图像
+		this.createCanvas();			//初始化canvas
+		this.addEvent();				//事件绑定
 	}
 	/**
 	 * 创建canvas画板对象
@@ -95,20 +93,18 @@ class DrawImg{
 		//鼠标滚轮事件，控制图片的放大缩小
 		this.canvas.addEventListener('mousewheel',(event)=>{
 			event = event || window.event; //兼容处理
-			x=event.clientX-this.canvas.offsetLeft-this.zeroX;
-			y=event.clientY-this.canvas.offsetTop-this.zeroY;
+			x=event.clientX-this.canvas.offsetLeft;
+			y=event.clientY-this.canvas.offsetTop;
 			obj.ctx.clearRect(0, 0, obj.canvas.width,obj.canvas.height);
 			if(event.wheelDelta>0){
 				//图片放大
 				obj.imgWidth*=(1+this.multiple);
 				obj.imgHeight*=(1+this.multiple);
+				
 				/*console.log('x:'+x);
 				console.log('y:'+y);
-				console.log('zeroX:'+this.zeroX);
-				console.log('zeroY:'+this.zeroY);
 				console.log('left:'+this.canvas.offsetLeft);
 				console.log('top:'+this.canvas.offsetTop);*/
-
 				//计算初始坐标，使放大以鼠标指针为中心
 				obj.beginX+=(obj.imgWidth*this.multiple)*((obj.beginX-x)/obj.imgWidth);
 				obj.beginY+=(obj.imgHeight*this.multiple)*((obj.beginY-y)/obj.imgHeight);
@@ -181,8 +177,8 @@ class DrawImg{
 				//计算比例
 				let scaleX=this.canvas.width/this.imgWidth;
 				let scaleY=this.canvas.height/this.imgHeight;
-				console.log(scaleX);
-				console.log(scaleY);
+				//console.log(scaleX);
+				//console.log(scaleY);
 				if(scaleX>scaleY){
 					this.beginX=0;
 					this.imgWidth=this.canvas.width;
@@ -206,7 +202,6 @@ class DrawImg{
 	rtImageData(){
 		return this.canvas.toDataURL();
 	}
-
 	test(){
 		this.ctx.fillRect(25,25,100,100);
 		console.log(this.canvas.width);

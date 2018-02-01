@@ -1,5 +1,5 @@
 <template>
-	<div id="imgBox" :class="boxClassName" @mouseover="toolShow()" @mouseout="toolHide()" contenteditable="false">
+	<div id="imgBox" :class="boxClassName" @mouseover="toolShow()" @mouseout="toolHide()" contenteditable="false" >
 		<div class="imgTool" v-if="isToolShow">
 			<ul>
 				<li>
@@ -86,9 +86,11 @@
 
 
 <style type="text/css">
+	#imgBox{
+		text-align: right;
+	}
 	#imgBox img{
-		display: inline-block;
-		width: 100%;height: 100%
+		width: 100%;height: 100%;text-align: center;
 	}
 	#imgBox:hover{
 		border: 2px dashed red;

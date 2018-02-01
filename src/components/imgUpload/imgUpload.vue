@@ -3,31 +3,26 @@
 		<form id="fileUpload" accept-charset="utf-8" enctype="multipart/form-data" method="post">
 			<input id="ipt-file" class="ipt-file" type="file" name="imgFile" @change="fileChange()" style="outline:none">
 		</form>
-		<canvas id="canvas-img" :width='width' :height="height" v-model="image" v-show="isFileSelect">
+		<canvas id="canvas-img" width='501' height="400" v-model="image" v-show="isFileSelect">
 			fsda
 		</canvas>
-		<div>
-			<div id="preview" v-show="isFileSelect">
-				<img :src="image" width="100" height="100" style="background:#eee;">
-				<img :src="image" width="100" height="100" style="background:#eee;border-radius: 50px">
-				<img :src="image" width="50" height="50" style="background:#eee;">
-				<img :src="image" width="50" height="50" style="background:#eee;border-radius: 50px">
-			</div>
-			<div id="submitBox" v-show="isFileSelect">
-				<button class="btn btn-success btn-block btn-sm"  
-				title="图片将被裁切压缩" @click="uploadImg()">
-					<span v-if="!isUploading">上传</span> 
-					<span v-else><i class="fa fa-spinner fa-spin"></i>&nbsp;上传中</span> 
-				</button>
-				<button class="btn btn-default btn-block btn-sm" 
-				title="图片未被裁切压缩" @click="uploadImgPri()">
-					<span v-if="!isUploading2">上传原图</span> 
-					<span v-else><i class="fa fa-spinner fa-spin"></i>&nbsp;上传中</span> 
-				</button>
-			</div> 
+		<div id="preview" v-show="isFileSelect">
+			<img :src="image" width="100" height="100" style="background:#eee;">
+			<img :src="image" width="100" height="100" style="background:#eee;border-radius: 50px">
+			<img :src="image" width="50" height="50" style="background:#eee;">
+			<img :src="image" width="50" height="50" style="background:#eee;border-radius: 50px">
 		</div>
-		<div style="height:108px">
-			
+		<div id="submitBox" v-show="isFileSelect">
+			<button class="btn btn-success btn-block btn-sm"  
+			title="图片将被裁切压缩" @click="uploadImg()">
+				<span v-if="!isUploading">上传</span> 
+				<span v-else><i class="fa fa-spinner fa-spin"></i>&nbsp;上传中</span> 
+			</button>
+			<button class="btn btn-default btn-block btn-sm" 
+			title="图片未被裁切压缩" @click="uploadImgPri()">
+				<span v-if="!isUploading2">上传原图</span> 
+				<span v-else><i class="fa fa-spinner fa-spin"></i>&nbsp;上传中</span> 
+			</button>
 		</div>
 	</div>
 </template>
@@ -48,32 +43,17 @@
 				uploadUrl:'',//图片上传地址
 				image:'',//图片预览src
 				testString:'lalal',//测试字符串
+				resultURL:'',
 			}
 		},
 		props:{
-			//图片上传服务器URL地址
 			URL:{
 				type:String,
-				default:"null",
+				default:"http://localhost:80/www3/home-server/public/imgUpload",
 			},
-			width:{
-				type:String,
-				default:'500px',
-			},
-			height:{
-				type:String,
-				default:'400px'
-			},
-			options:{
-				type:Object,
-				default:()=>{
-					return {}
-				},
-			}
 		},
 		created:function(){
 			this.uploadUrl=this.URL;
-
 		},
 		mounted(){
 		},
@@ -88,16 +68,15 @@
 						ipt:'ipt-file',
 						context:'canvas-img',
 						multiple:0.04,
-						zeroX:500,
-						zeroY:90,
 					});
+					this.drawImg.drawFill();
+					//事件委托
+					this.drawImg.eventUpdate=()=>{
+						that.image=that.drawImg.rtImageData();//获取canvas数据
+					}
+					//this.image=this.drawImg.rtImageData();
 				}
-				this.drawImg.drawFill();
-				//事件委托
-				this.drawImg.eventUpdate=()=>{
-					that.image=that.drawImg.rtImageData();//获取canvas数据
-				}
-				//this.image=this.drawImg.rtImageData();
+				
 				this.isFileSelect=true;
 			},
 			//裁切压缩图上传
@@ -111,10 +90,14 @@
 				this.$http.post(this.uploadUrl,formData,{
 					emulateJSON: true,
 				}).then((res)=>{
-					//var red=eval(res.body);
 					that.isUploading=false;
 					that.$emit('uploadend',res);
-					console.log(res);
+					if(res){
+						that.drawImg='';
+						that.isFileSelect=false;
+					}else{
+						console.error('上传出错');
+					}
 				});
 			},
 			//原图上传
@@ -125,12 +108,17 @@
 				this.$http.post(this.uploadUrl,new FormData($('#fileUpload')[0]),{
 					emulateJSON: true,
 				}).then((res)=>{
+					this.isUploading2=false;
 					//var red=eval(res.body);
-					that.isUploading2=false;
 					that.$emit('uploadend',res);
-					//console.log(res);
+					if(res){
+						that.drawImg='';
+						that.isFileSelect=false;
+					}else{
+						console.error('上传出错');
+					}
 				});
-			}
+			},
 		}
 	}
 
@@ -138,7 +126,7 @@
 
 <style type="text/css">
 	#imgUpload{
-		border:1px solid #eee;;
+		border:1px solid #eee;width:502px;
 	}
 	#canvas-img{
 		border-top: 2px solid #bbb;

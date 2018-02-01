@@ -17,7 +17,7 @@
 						<h4 class="modal-title" id="myModalLabel">图片上传</h4>
 					</div>
 					<div class="modal-body" style="padding:0">
-						<imgUpload width="597" height="400" @uploadend="uploadend" URL="http://localhost/test/receive.php"></imgUpload>
+						<imgUpload width="597" height="400" @uploadend="uploadend" :URL="imgUploadURL"></imgUpload>
 						<!-- <img src="http://pic2.sc.chinaz.com/files/pic/pic9/201711/zzpic8396.jpg" alt="" width="100%"> -->
 					</div>
 					
@@ -60,6 +60,7 @@
 			return {
 				TextShow:config.MenuTextShow,
 				isShow:false,
+				imgUploadURL:config.imgUpload.url,
 				sty:{
 
 				}
@@ -90,11 +91,13 @@
 			uploadend:(data)=>{
 				let imgBox=Vue.extend(imgBoxComp);
 				let dt=eval(data);
-				console.log(dt.body);
-				document.execCommand("insertHTML",false,"<div id='imgBoxDiv'>dd</div>");
+				let url=dt.body.replace(/\/%2F/g,'/').replace(/%2F/g,'/');//将返回的字符串正则替换成可用URL
+				$('#uploadImg').modal('hide');
+				document.execCommand("insertHTML",false,"<br>");
+				document.execCommand("insertHTML",false,"<span id='imgBoxDiv'>dd</span>");
 				new imgBox({
 					propsData:{
-						src:dt.body,
+						src:url,
 					}
 				}).$mount('#imgBoxDiv');
 				document.execCommand("insertHTML",false,"<br>");

@@ -1,8 +1,8 @@
 /*
 * @Author: yang
 * @Date:   2018-01-26 14:08:32
-* @Last Modified by:   yang
-* @Last Modified time: 2018-01-26 14:21:01
+* @Last Modified by:   worldzb
+* @Last Modified time: 2018-02-01 23:23:41
 */
 const language=[
 	{lang:'javascript'},
@@ -32,9 +32,11 @@ const heightList=[
 	100,200,250,300,350,400,450,500,600,700,800,1000
 ]
 
+const cdnUrl="https://cdn.bootcss.com/monaco-editor/0.10.1/min";
 const config={
 	language,
-	heightList
+	heightList,
+	cdnUrl
 }
 
 export default config;

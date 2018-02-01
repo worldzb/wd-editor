@@ -1,6 +1,13 @@
 <template>
-	<div id="codeEditor" class="codeShow" contenteditable="false" @mouseover="msOver()">
+	<div id="codeEditor" class="codeShow" contenteditable="false" @mouseover="msOver()" v-model="codeHtml">
 		<div :class="{selectLang:isShow.isSelect}" v-show='isShow.language'>
+			
+			<div style="float: left">
+				<a type="button" class="tag">
+					<input type="text" name="" placeholder="tag">
+				</a>
+			</div>
+
 			<div style="float: left">
 				<a type="button" class="btn btn-default dropdown-toggle lang" 
 				data-toggle="dropdown">
@@ -12,7 +19,17 @@
 					</li>
 				</ul>
 			</div>
-			<div>
+			<div style="float: left">
+				<a type="button" class="btn btn-default lang" @click="isShow.body=!isShow.body">
+					{{isShow.body?'隐藏主体':'显示'}}
+				</a>
+			</div>
+			<div >
+				<a type="button" class="btn btn-default lang">
+					获取代码
+				</a>
+			</div>
+			<!-- <div>
 				<a type="button" class="btn btn-default dropdown-toggle lang" 
 				data-toggle="dropdown">
 					{{height}}
@@ -22,21 +39,23 @@
 						<a href="#">{{item}}</a>
 					</li>
 				</ul>
-			</div>
+			</div> -->
 		</div>
-		<monaco-editor
+		<div v-show="isShow.body">
+			<monaco-editor
 			:height="height"
-	        :language="lang"
-	        srcPath="https://cdn.bootcss.com/monaco-editor/0.10.1/min"
-	        :code="code"
-	        :options="options"
-	        :highlighted="highlightLines"
-	        :changeThrottle="500"
-	        theme="vs"
-	        @mounted="onMounted"
-	        @codeChange="onCodeChange"
-		>
-		</monaco-editor>
+			:language="lang"
+			:srcPath="srcPath"
+			:code="code"
+			:options="options"
+			:highlighted="highlightLines"
+			:changeThrottle="300"
+			theme="vs"
+			@mounted="onMounted"
+			@codeChange="onCodeChange"
+			>
+			</monaco-editor>
+		</div>
 	</div>
 </template>
 
@@ -61,13 +80,15 @@
 				],
 				lang:'javascript',
 				language:config.language,
-				height:600,
+				height:300,
 				heightList:config.heightList,
-
+				srcPath:'',
 				isShow:{
 					language:false,
 					isSelect:true,
-				}
+					body:true,
+				},
+				codeHtml:''
 			}
 		},
 		components:{
@@ -77,6 +98,7 @@
 			this.options = {
 				selectOnLineNumbers: false
 			};
+			this.srcPath=config.cdnUrl;
 		},
 		mounted(){
 			this.init();
@@ -119,18 +141,31 @@
 
 <style type="text/css">
 	.codeShow{
+		border-top:1px solid #ddd;
+		border-bottom:1px solid #ddd;
+		border-right:1px solid #ddd;
 		border-left:5px solid #ddd;
 	}
 	.selectLang{
-		margin-left: 6%;
+		
 	}
 	.lang{
 		padding: 2px 8px;
 		height: 25px;
 		width: 100px;
 		font-family:'Consolas';
-		border-top:2px solid #eee;
+		
 		border-bottom:2px solid #eee;
+	}
+	.tag input{
+		padding: 2px 8px;
+		height: 25px;
+		width: 100px;
+		font-family:'Consolas';
+		border:none;
+		border-bottom:2px solid #eee;
+		outline: none;
+		background: #eee
 	}
 
 </style>
