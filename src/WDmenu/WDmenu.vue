@@ -19,6 +19,7 @@
 			<wd-code></wd-code>
 			<horizontal></horizontal>
 			<about></about>
+			<preview></preview>
 			<test></test>
 		</div>
 	</div>

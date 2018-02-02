@@ -20,13 +20,19 @@
 				</ul>
 			</div>
 			<div style="float: left">
+				<a type="button"  class="btn btn-default dropdown-toggle lang" 
+				data-toggle="dropdown">
+					{{currentTheme}}
+				</a>
+				<ul class="dropdown-menu my-active" role="menu" style="height:55px">
+					<li v-for="(item,index) in themeList" @click="switchTheme(index)">
+						<a href="#">{{item}}</a>
+					</li>
+				</ul>
+			</div>
+			<div>
 				<a type="button" class="btn btn-default lang" @click="isShow.body=!isShow.body">
 					{{isShow.body?'隐藏主体':'显示'}}
-				</a>
-			</div>
-			<div >
-				<a type="button" class="btn btn-default lang">
-					获取代码
 				</a>
 			</div>
 			<!-- <div>
@@ -50,7 +56,7 @@
 			:options="options"
 			:highlighted="highlightLines"
 			:changeThrottle="300"
-			theme="vs"
+			:theme="currentTheme"
 			@mounted="onMounted"
 			@codeChange="onCodeChange"
 			>
@@ -67,7 +73,8 @@
 	export default{
 		data(){
 			return{
-				code: '// type your code \n',
+				//编辑的代码
+				code: '// 开始你的代码吧 \n',
 				highlightLines: [
 					{
 						number: 0,
@@ -82,13 +89,17 @@
 				language:config.language,
 				height:300,
 				heightList:config.heightList,
+				themeList:[
+					'vs','vs-dark'
+				],
+				currentTheme:'vs',
 				srcPath:'',
 				isShow:{
 					language:false,
 					isSelect:true,
 					body:true,
 				},
-				codeHtml:''
+				codeHtml:'',
 			}
 		},
 		components:{
@@ -108,21 +119,21 @@
 				
 			},
 			onMounted(editor) {
-				console.log('after mount!', editor, editor.getValue(), editor.getModel());
+				//console.log('after mount!', editor, editor.getValue(), editor.getModel());
 				this.editor = editor;
 			},
 			onMounted2(editor) {
-				console.log('after mount!', editor, editor.getValue(), editor.getModel());
+				//console.log('after mount!', editor, editor.getValue(), editor.getModel());
 				this.editor2 = editor;
 			},
 			onCodeChange(editor) {
-				console.log('code changed!', 'code:' + this.editor.getValue());
+				//console.log('code changed!', 'code:' + this.editor.getValue());
 			},
 			onCodeChange2(editor) {
-				console.log('code changed!', 'code:' + this.editor2.getValue());
+				//console.log('code changed!', 'code:' + this.editor2.getValue());
 			},
 			clickHandler() {
-				console.log('here is the code:', this.editor.getValue());
+				//console.log('here is the code:', this.editor.getValue());
 			},
 			msOver(){
 				this.isShow.language=true;
@@ -132,6 +143,9 @@
 			},
 			switchHeight(index){
 				this.height=this.heightList[index];
+			},
+			switchTheme(index){
+				this.currentTheme=this.themeList[index];
 			}
 		}
 	}

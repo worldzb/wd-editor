@@ -84,8 +84,8 @@ module.exports = {
     language () {
       window.monaco.editor.setModelLanguage(this.editor.getModel(), this.language)
     },
-    height(){
-      
+    theme(val){
+      window.monaco.editor.setTheme(val);
     }
   },
   methods: {
@@ -158,7 +158,8 @@ module.exports = {
       this.editorHasLoaded(this.editor, window.monaco);
     },
     changeOption(){
-      let option=this.editorOptions();
+      let option=this.editorOptions;
+      alert(option);
       this.editor.updateOptions(option);
     },
     //对象销毁

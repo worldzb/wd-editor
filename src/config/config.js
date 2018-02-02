@@ -2,7 +2,7 @@
 * @Author: worldzb
 * @Date:   2017-12-10 20:54:06
 * @Last Modified by:   yang
-* @Last Modified time: 2018-02-02 09:49:35
+* @Last Modified time: 2018-02-02 11:10:54
 */
 
 //字体选择
@@ -40,7 +40,7 @@ const config={
 	MenuTextShow:false,
 	fontFace:fontFace,
 	imgUpload:imgUpload,
-	version:'1.0.0(内测版)',
+	version:'1.1.0(内测版)',
 }
 
 
