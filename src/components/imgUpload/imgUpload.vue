@@ -6,23 +6,25 @@
 		<canvas id="canvas-img" width='501' height="400" v-model="image" v-show="isFileSelect">
 			fsda
 		</canvas>
-		<div id="preview" v-show="isFileSelect">
-			<img :src="image" width="100" height="100" style="background:#eee;">
-			<img :src="image" width="100" height="100" style="background:#eee;border-radius: 50px">
-			<img :src="image" width="50" height="50" style="background:#eee;">
-			<img :src="image" width="50" height="50" style="background:#eee;border-radius: 50px">
-		</div>
-		<div id="submitBox" v-show="isFileSelect">
-			<button class="btn btn-success btn-block btn-sm"  
-			title="图片将被裁切压缩" @click="uploadImg()">
-				<span v-if="!isUploading">上传</span> 
-				<span v-else><i class="fa fa-spinner fa-spin"></i>&nbsp;上传中</span> 
-			</button>
-			<button class="btn btn-default btn-block btn-sm" 
-			title="图片未被裁切压缩" @click="uploadImgPri()">
-				<span v-if="!isUploading2">上传原图</span> 
-				<span v-else><i class="fa fa-spinner fa-spin"></i>&nbsp;上传中</span> 
-			</button>
+		<div id="tool">
+			<div id="preview" v-show="isFileSelect">
+				<img :src="image" width="100" height="100" style="background:#eee;">
+				<img :src="image" width="100" height="100" style="background:#eee;border-radius: 50px">
+				<img :src="image" width="50" height="50" style="background:#eee;">
+				<img :src="image" width="50" height="50" style="background:#eee;border-radius: 50px">
+			</div>
+			<div id="submitBox" v-show="isFileSelect">
+				<button class="btn btn-success btn-block btn-sm"  
+				title="图片将被裁切压缩" @click="uploadImg()">
+					<span v-if="!isUploading">上传</span> 
+					<span v-else><i class="fa fa-spinner fa-spin"></i>&nbsp;上传中</span> 
+				</button>
+				<button class="btn btn-default btn-block btn-sm" 
+				title="图片未被裁切压缩" @click="uploadImgPri()">
+					<span v-if="!isUploading2">上传原图</span> 
+					<span v-else><i class="fa fa-spinner fa-spin"></i>&nbsp;上传中</span> 
+				</button>
+			</div>
 		</div>
 	</div>
 </template>
@@ -43,7 +45,7 @@
 				uploadUrl:'',//图片上传地址
 				image:'',//图片预览src
 				testString:'lalal',//测试字符串
-				resultURL:'',
+				resultURL:'',  
 			}
 		},
 		props:{
@@ -126,9 +128,10 @@
 
 <style type="text/css">
 	#imgUpload{
-		border:1px solid #eee;width:502px;
+		border:1px solid #eee;width:100%;
 	}
 	#canvas-img{
+		width:100%;
 		border-top: 2px solid #bbb;
 		border-bottom: 2px solid #bbb;
 		background: #ccc;
@@ -165,5 +168,9 @@
 		margin-top: -5px;
 		padding: 5px;
 		float: left;
+	}
+	#tool{
+		display: block;
+		height: 110px;
 	}
 </style>

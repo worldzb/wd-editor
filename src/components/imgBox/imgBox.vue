@@ -1,44 +1,62 @@
 <template>
-	<div id="imgBox" :class="boxClassName" @mouseover="toolShow()" @mouseout="toolHide()" contenteditable="false" >
-		<div class="imgTool" v-if="isToolShow">
-			<ul>
-				<li>
-					<span id="dropdownMenu1" class="dropdown-toggle" data-toggle="dropdown">
-						<i class="fa fa-cog"></i>
-					</span>
-					<div class="dropdown-menu dropdown-list" role="menu">
-						<div class="dropdown-item" @click="changeImgClass('img-rounded')">
-							<i class="fa fa-square-o"></i>&nbsp;&nbsp;矩形
+	<div contenteditable="false" :style='sty'>
+		<div id="imgBox" :class="boxClassName" @mouseover="toolShow()" @mouseout="toolHide()">
+			<div class="imgTool" v-if="isToolShow">
+				<ul>
+					<li>
+						<span id="dropdownMenu1" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="fa fa-cog"></i>
+						</span>
+						<div class="dropdown-menu dropdown-list" role="menu">
+							<div class="dropdown-item" @click="changeImgClass('img-rounded')">
+								<i class="fa fa-square-o"></i>&nbsp;&nbsp;矩形
+							</div>
+							<div class="dropdown-item" @click="changeImgClass('img-circle')">
+								<i class="fa fa-circle-o"></i>&nbsp;&nbsp;圆形
+							</div>
+							<div class="dropdown-item" @click="changeImgClass('img-thumbnail')">
+								<i class="fa fa-square"></i>&nbsp;&nbsp;缩略图
+							</div>
 						</div>
-						<div class="dropdown-item" @click="changeImgClass('img-circle')">
-							<i class="fa fa-circle-o"></i>&nbsp;&nbsp;圆形
-						</div>
-						<div class="dropdown-item" @click="changeImgClass('img-thumbnail')">
-							<i class="fa fa-square"></i>&nbsp;&nbsp;缩略图
-						</div>
-					</div>
-				</li>
+					</li>
 
-				<li>
-					<span id="dropdownMenu2" class="dropdown-toggle" data-toggle="dropdown">
-						<i class="fa fa-photo"></i>
-					</span>
-					<div class="dropdown-menu dropdown-list" role="menu">
-						<div class="dropdown-item" @click="changBoxClass('imgBox-small')">
-							<i class="fa fa-lg fa-photo"></i>&nbsp;&nbsp;小
+					<li>
+						<span id="dropdownMenu2" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="fa fa-photo"></i>
+						</span>
+						<div class="dropdown-menu dropdown-list" role="menu">
+							<div class="dropdown-item" @click="changBoxClass('imgBox-small')">
+								<i class="fa fa-lg fa-photo"></i>&nbsp;&nbsp;小
+							</div>
+							<div class="dropdown-item" @click="changBoxClass('imgBox-mid')">
+								<i class="fa fa-2x fa-photo"></i>&nbsp;&nbsp;中
+							</div>
+							<div class="dropdown-item" @click="changBoxClass('imgBox-big')">
+								<i class="fa fa-3x fa-photo"></i>&nbsp;&nbsp;大
+							</div>
 						</div>
-						<div class="dropdown-item" @click="changBoxClass('imgBox-mid')">
-							<i class="fa fa-2x fa-photo"></i>&nbsp;&nbsp;中
+					</li>
+					<li>
+						<span id="dropdownMenu3" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="fa fa-align-justify"></i>
+						</span>
+						<div class="dropdown-menu dropdown-list" role="menu">
+							<div class="dropdown-item" @click="sty.textAlign='left'">
+								<i class="fa fa-align-left"></i>&nbsp;&nbsp;左对齐
+							</div>
+							<div class="dropdown-item" @click="sty.textAlign='center'">
+								<i class="fa fa-align-center"></i>&nbsp;&nbsp;居中
+							</div>
+							<div class="dropdown-item" @click="sty.textAlign='right'">
+								<i class="fa fa-align-right"></i>&nbsp;&nbsp;右对齐
+							</div>
 						</div>
-						<div class="dropdown-item" @click="changBoxClass('imgBox-big')">
-							<i class="fa fa-3x fa-photo"></i>&nbsp;&nbsp;大
-						</div>
-					</div>
-				</li>
-				<!-- <li><i class="fa fa-th-list"></i></li> -->
-			</ul>
+					</li>
+					<!-- <li><i class="fa fa-th-list"></i></li> -->
+				</ul>
+			</div>
+			<img :class="imgClassName" :src="url">
 		</div>
-		<img :class="imgClassName" :src="url">
 	</div>
 </template>
 
@@ -47,9 +65,12 @@
 		data(){
 			return{
 				imgClassName:'img-rounded',
-				boxClassName:"imgBox-small",
+				boxClassName:"imgBox-mid",
 				isToolShow:false,
 				url:'',
+				sty:{
+					textAlign:'center',
+				}
 			}
 		},
 		created(){
@@ -87,24 +108,25 @@
 
 <style type="text/css">
 	#imgBox{
-		text-align: right;
+		position:relative;
+		display: inline-block;
 	}
 	#imgBox img{
-		width: 100%;height: 100%;text-align: center;
+		width: 100%;height: 100%;
 	}
 	#imgBox:hover{
 		border: 2px dashed red;
 	}
 	.imgBox-small{
-		width: 200px;height: 200px;background: #eee;overflow: hidden;
+		width: 200px;background: #eee;overflow: hidden;
 		padding: 0;margin: 0;
 	}
 	.imgBox-mid{
-		width: 400px;height: 400px;background: #eee;overflow: hidden;
+		width: 400px;background: #eee;overflow: hidden;
 		padding: 0;margin: 0;
 	}
 	.imgBox-big{
-		width: 600px;height: 600px;background: #eee;overflow: hidden;
+		width: 600px;background: #eee;overflow: hidden;
 		padding: 0;margin: 0;
 	}
 

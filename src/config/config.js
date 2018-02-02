@@ -1,8 +1,8 @@
 /*
 * @Author: worldzb
 * @Date:   2017-12-10 20:54:06
-* @Last Modified by:   worldzb
-* @Last Modified time: 2018-02-01 23:21:21
+* @Last Modified by:   yang
+* @Last Modified time: 2018-02-02 09:49:35
 */
 
 //字体选择
@@ -27,7 +27,7 @@ const fontFace=[
 ];
 
 const imgUpload={
-	url:'http://localhost:80/www3/home-server/public/imgUpload',
+	url:'http://dev.cc:80/imgUpload',
 };
 
 const codeShow={

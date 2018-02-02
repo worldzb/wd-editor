@@ -100,7 +100,6 @@
 						src:url,
 					}
 				}).$mount('#imgBoxDiv');
-				document.execCommand("insertHTML",false,"<br>");
 			}
 		}
 	}
