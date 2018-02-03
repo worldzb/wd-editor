@@ -1,25 +1,24 @@
 <template>
 	<div id="content" >
-		<div class="mainBody" id="mb" contenteditable="true" :style="sty">
-			<div v-html="test">
+		<div class="mainBody" id="mb" contenteditable="true" :style="sty" @change="changeEven()">
+			<div v-model="content">
 				
 			</div>
 		</div>
-		
 	</div>
 </template>
 
 <script type="text/javascript">
 
 	import vue from 'vue';
-	import {mapGetters,mapActions} from 'vuex';
-	import store from '../store/main.js';
+	import {mapGetters,mapMutations} from 'vuex';
+	//import store from '../store/main.js';
 	import box from './modules/box.vue';
 
 	export default{
 		data(){
 			return{
-				test:'begin',
+				content:'',
 				color:'',
 			}
 		},
@@ -27,7 +26,7 @@
 			box:box,
 		},
 		computed:{
-			...mapGetters(['download']),
+			...mapGetters(['getEditorContent']),
 			sty(){
 				const fixedWidth = '100%';
 				const fixedHeight = ($(window).height()-39)+'px';
@@ -35,7 +34,10 @@
 					width:fixedWidth,
 					height:fixedHeight
 				}
-			}
+			},
+		},
+		watch:{
+			
 		},
 		props:{
 			width:{
@@ -51,6 +53,9 @@
 			this.style={
 				width:this.width,
 			}
+		},
+		methods:{
+			
 		}
 	}
 </script>
