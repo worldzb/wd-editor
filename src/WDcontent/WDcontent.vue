@@ -1,7 +1,7 @@
 <template>
 	<div id="content" >
-		<div class="mainBody" id="mb" contenteditable="true" :style="sty" @change="changeEven()">
-			<div v-model="content">
+		<div class="mainBody" id="mb" contenteditable="true" :style="sty">
+			<div v-html="content">
 				
 			</div>
 		</div>
@@ -10,34 +10,16 @@
 
 <script type="text/javascript">
 
-	import vue from 'vue';
+	import Vue from 'vue';
 	import {mapGetters,mapMutations} from 'vuex';
-	//import store from '../store/main.js';
 	import box from './modules/box.vue';
+	import GetCon from './getContent.js';
 
 	export default{
 		data(){
 			return{
-				content:'',
 				color:'',
 			}
-		},
-		components:{
-			box:box,
-		},
-		computed:{
-			...mapGetters(['getEditorContent']),
-			sty(){
-				const fixedWidth = '100%';
-				const fixedHeight = ($(window).height()-39)+'px';
-				return {
-					width:fixedWidth,
-					height:fixedHeight
-				}
-			},
-		},
-		watch:{
-			
 		},
 		props:{
 			width:{
@@ -49,12 +31,36 @@
 				default:"200px"
 			}
 		},
-		created:function(){
-			this.style={
-				width:this.width,
+		computed:{
+			//body 样式计算
+			...mapGetters(['getClearUpDoc','getEditorContent']),
+			sty(){
+				const fixedWidth = '100%';
+				const fixedHeight = ($(window).height()-39)+'px';
+				return {
+					width:fixedWidth,
+					height:fixedHeight,
+				}
+			},
+			//内容
+			content(){
+				return this.getEditorContent;
 			}
 		},
+		watch:{
+			//监视 清理文档开关
+			/*getClearUpDoc(val){
+				if(val){
+					let getContent=new GetCon({
+						el:'#'
+					});
+					getContent.getCode();
+				}
+				this.setClearUpDoc(false);
+			}*/
+		},
 		methods:{
+			
 			
 		}
 	}

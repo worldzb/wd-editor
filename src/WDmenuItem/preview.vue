@@ -7,8 +7,7 @@
 
 <script>
 import config from '../config/config.js';
-import GetContent from '../WDcontent/getContent.js';
-import {mapMutations,mapGetters} from 'vuex';
+
 export default{
 	name:'preview',
 	data(){
@@ -17,19 +16,14 @@ export default{
 			getCon:'',
 		}
 	},
-	computed:{
-		...mapGetters(['getEditorContent']),
-	},
+	computed:{},
 	created(){
-		this.getCon=new GetContent({
-			el:'#mb',
-		});
+		
 	},
 	methods:{
-		...mapMutations(['setEditorContent']),
 		preview(){
-			this.setEditorContent($('.mainBody').html());
-			alert(this.getEditorContent);
+			
+			
 		},
 
 	}

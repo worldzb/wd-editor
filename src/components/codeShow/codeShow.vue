@@ -1,5 +1,5 @@
 <template>
-	<div id="codeEditor" class="codeShow" contenteditable="false" @mouseover="msOver()" v-model="codeHtml">
+	<div class="codeEditor codeShow" contenteditable="false" @mouseover="msOver()">
 		<div :class="{selectLang:isShow.isSelect}" v-show='isShow.language'>
 			
 			<div style="float: left">
@@ -35,17 +35,6 @@
 					{{isShow.body?'隐藏主体':'显示'}}
 				</a>
 			</div>
-			<!-- <div>
-				<a type="button" class="btn btn-default dropdown-toggle lang" 
-				data-toggle="dropdown">
-					{{height}}
-				</a>
-				<ul class="dropdown-menu my-active" role="menu" style="height:200px">
-					<li v-for="(item,index) in heightList" @click="switchHeight(index)">
-						<a href="#">{{item}}</a>
-					</li>
-				</ul>
-			</div> -->
 		</div>
 		<div v-show="isShow.body">
 			<monaco-editor
@@ -62,11 +51,18 @@
 			>
 			</monaco-editor>
 		</div>
+		<div class="hidden">
+<pre>
+{{code}}
+</pre>
+		</div>
 	</div>
 </template>
 
 
 <script type="text/javascript">
+
+
 	import domFunc from './domFunc.js';
 	import monacoEditor from './Monaco.vue';
 	import config from './config.js';
@@ -74,10 +70,9 @@
 		data(){
 			return{
 				//编辑的代码
-				code: '// 开始你的代码吧 \n',
 				highlightLines: [
 					{
-						number: 0,
+						number: 0,					
 						class: 'primary-highlighted-line'
 					},
 					{
@@ -85,22 +80,34 @@
 						class: 'secondary-highlighted-line'
 					}
 				],
-				lang:'javascript',
-				language:config.language,
-				height:300,
-				heightList:config.heightList,
+				lang:'javascript',  			//当前语言
+				language:config.language, 		//语言列表
+				height:300,  //编辑器高度
+				heightList:config.heightList,  	//高度列表
 				themeList:[
-					'vs','vs-dark'
+					'vs','vs-dark'   			//主题列表
 				],
-				currentTheme:'vs',
-				srcPath:'',
-				isShow:{
+				currentTheme:'vs', 				//当前主题
+				srcPath:'',     				//插件CDN地址
+				isShow:{						//显示开关列表
 					language:false,
 					isSelect:true,
 					body:true,
 				},
-				codeHtml:'',
 			}
+		},
+		props:{
+			indexing:{
+				type:Number,
+				default:1,
+			},
+			code:{
+				type:String,
+				default:"error! loading is defeated",
+			},
+		},
+		computed:{
+
 		},
 		components:{
 		   monacoEditor,
@@ -109,15 +116,12 @@
 			this.options = {
 				selectOnLineNumbers: false
 			};
-			this.srcPath=config.cdnUrl;
+			this.srcPath=config.cdnUrl; //设置插件 cdn 加载地址
 		},
 		mounted(){
-			this.init();
+			
 		},
 		methods:{
-			init(){
-				
-			},
 			onMounted(editor) {
 				//console.log('after mount!', editor, editor.getValue(), editor.getModel());
 				this.editor = editor;
@@ -127,7 +131,7 @@
 				this.editor2 = editor;
 			},
 			onCodeChange(editor) {
-				//console.log('code changed!', 'code:' + this.editor.getValue());
+				this.code=this.editor.getValue();
 			},
 			onCodeChange2(editor) {
 				//console.log('code changed!', 'code:' + this.editor2.getValue());

@@ -20,6 +20,7 @@
 			<horizontal></horizontal>
 			<about></about>
 			<preview></preview>
+			<save></save>
 			<test></test>
 		</div>
 	</div>

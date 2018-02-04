@@ -10,9 +10,14 @@
 
 
 <script>
+
+	//代码编辑器创建
 	import config from '../config/config.js';
 	import codeShowCom from '../components/codeShow/codeShow.vue';
 	import Vue from 'vue';
+
+	import {mapMutations,mapGetters} from 'vuex';
+
 	export default{
 		name:'wdCode',
 		data(){
@@ -20,15 +25,44 @@
 				TextShow:config.MenuTextShow
 			}
 		},
+		computed:{
+			...mapGetters(['getArrCode']),
+		},
 		methods:{
+			...mapMutations(['setArrCode']),
 			code(){
-				let codeShow=Vue.extend(codeShowCom);
 				let packString="<div id='tagCodeShow'></div>";
-				document.execCommand('insertHTML',false,'<div></div>');
-				document.execCommand('insertHTML',false,'<br>');
+				document.execCommand('insertHTML',false,'<div><br></div>');
 				document.execCommand('insertHTML',false,packString);
-				new codeShow().$mount('#tagCodeShow');
-				
+				this.creatCodeShow();
+			},
+			creatCodeShow(){
+				let arr=this.getArrCode;
+				//console.log('code.vue ：'+arr.length);
+				let codeShow=Vue.extend(codeShowCom);
+				//创建codeShow 的时候，给每一个组件排个号
+				if(arr.length===0){
+					let res=new codeShow({
+						propsData:{
+							indexing:0,
+							code:'function(){hello}',
+						},
+
+					}).$mount('#tagCodeShow');
+					//console.log(res);
+				}else{
+					new codeShow({
+						propsData:{
+							indexing:arr.length,
+							code:'//haha',
+						},
+					}).$mount('#tagCodeShow');
+				}
+				arr.push({
+					code:''
+				});
+				this.setArrCode(arr);
+				console.log('code.vue ：'+arr.length);
 			}
 		}
 	}
