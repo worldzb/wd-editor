@@ -7,6 +7,7 @@
 
 <script>
 	import config from '../../config/config.js'
+	import getContent from '../WDcontent/getContent.js'
 	export default{
 		name:'save',
 		data(){
@@ -16,7 +17,7 @@
 		},
 		methods:{
 			save:function(){
-				document.execCommand("Italic",false,null);
+				
 			}
 		}
 	}

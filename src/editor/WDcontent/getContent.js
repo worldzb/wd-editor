@@ -1,8 +1,8 @@
 /*
 * @Author: yang
 * @Date:   2018-02-02 11:25:53
-* @Last Modified by:   yang
-* @Last Modified time: 2018-02-05 13:59:35
+* @Last Modified by:   worldzb
+* @Last Modified time: 2018-02-05 21:01:13
 */
 
 /**
@@ -10,6 +10,7 @@
  */
 
 import Vue from 'vue';  
+import {Register} from '../container/kernel.js';
 
 class GetContent{
 	constructor(options){
@@ -17,13 +18,13 @@ class GetContent{
 		this.content='';
 	}
 	getCode(){
-		$('#codeEditor').html();
-		alert(typeof $(' #codeEditor'));
-		console.log($('#codeEditor').html("dd"));
+		//获取代码
+		
 
+		//替换
 	}
 	getContent(){
-		this.getCode();
+		
 	}
 }
 

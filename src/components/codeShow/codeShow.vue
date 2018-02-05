@@ -68,6 +68,7 @@
 	import domFunc from './domFunc.js';
 	import monacoEditor from './Monaco.vue';
 	import config from './config.js';
+	
 	export default{
 		data(){
 			return{
@@ -133,6 +134,7 @@
 				this.editor2 = editor;
 			},
 			onCodeChange(editor) {
+				this.container.register();
 				this.code=this.editor.getValue();
 			},
 			onCodeChange2(editor) {
