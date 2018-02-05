@@ -8,7 +8,7 @@
 				</a>
 			</div>
 
-			<div style="float: left">
+			<div style="float:left">
 				<a type="button" class="btn btn-default dropdown-toggle lang" 
 				data-toggle="dropdown">
 					{{lang}}
@@ -51,17 +51,19 @@
 			>
 			</monaco-editor>
 		</div>
-		<div class="hidden">
+
+		<div class="hidden code">
 <pre>
 {{code}}
 </pre>
 		</div>
+
 	</div>
 </template>
 
 
 <script type="text/javascript">
-
+//代码显示编辑插件
 
 	import domFunc from './domFunc.js';
 	import monacoEditor from './Monaco.vue';
