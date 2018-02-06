@@ -52,10 +52,8 @@
 			</monaco-editor>
 		</div>
 
-		<div class="hidden code">
-<pre>
+		<div class="hidden code" :value="lang">
 {{code}}
-</pre>
 		</div>
 
 	</div>

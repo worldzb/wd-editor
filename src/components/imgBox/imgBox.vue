@@ -65,7 +65,7 @@
 		data(){
 			return{
 				imgClassName:'img-rounded',
-				boxClassName:"imgBox-mid",
+				boxClassName:"imgBox-mid imgBox",
 				isToolShow:false,
 				url:'',
 				sty:{
@@ -98,7 +98,7 @@
 				this.imgClassName=$className;
 			},
 			changBoxClass($className){
-				this.boxClassName=$className;
+				this.boxClassName=$className+'.imgBox';
 			}
 		}
 	}

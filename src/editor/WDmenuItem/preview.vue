@@ -6,7 +6,8 @@
 </template>
 
 <script>
-import config from '../../config/config.js'
+import config from '../../config/config.js';
+import getCon from '../WDcontent/getContent.js';
 
 export default{
 	name:'preview',
@@ -22,8 +23,10 @@ export default{
 	},
 	methods:{
 		preview(){
-			
-			
+			let getContent=new getCon({
+				el:'#aaa'
+			});
+			getContent.getContent();
 		},
 
 	}
