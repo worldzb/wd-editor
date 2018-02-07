@@ -1,12 +1,13 @@
 /*
 * @Author: worldzb
 * @Date:   2018-01-08 20:51:59
-* @Last Modified by:   worldzb
-* @Last Modified time: 2018-02-04 01:32:11
+* @Last Modified by:   yang
+* @Last Modified time: 2018-02-07 10:00:39
 */
 import Vue from 'vue';
 import Vuex from 'vuex';
-import {editorStore} from '../editor/index.js'
+import {editorStore} from '../components/editor/editor/index.js'
+
 
 Vue.use(Vuex);
 
