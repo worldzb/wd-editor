@@ -1,13 +1,11 @@
 /*
 * @Author: worldzb
 * @Date:   2018-01-08 20:51:59
-* @Last Modified by:   yang
-* @Last Modified time: 2018-02-07 10:00:39
+* @Last Modified by:   worldzb
+* @Last Modified time: 2018-02-17 01:21:52
 */
 import Vue from 'vue';
 import Vuex from 'vuex';
-import {editorStore} from '../components/editor/editor/index.js'
-
 
 Vue.use(Vuex);
 
@@ -38,7 +36,6 @@ const getters={
 }
 
 const modules={
-	editorStore
 }
 
 const store=new Vuex.Store({
